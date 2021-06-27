@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_portpolio_web_app/widgets/contact_button.dart';
 
@@ -43,6 +45,81 @@ class Portfolio extends StatelessWidget {
           )
         ],
       ),
+      body: Stack(
+        children: [
+          Body(),
+        ],
+      ),
+    );
+  }
+}
+
+class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          child: Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Opacity(
+                        opacity: 0.5,
+                        child: Image.asset("headshot.png"),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "I\'m Ayesh Lakshan. \nA software Developer. ",
+                              style: TextStyle(
+                                  fontSize: 44.0, color: Colors.black54),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 70.0,
+                                  vertical: 60.0,
+                                ),
+                                child: ContactButton(
+                                  buttonText: "Drop me a line",
+                                  buttonIcon: Icon(Icons.mail_outline),
+                                  onPressedButton: () {
+                                    print("contact me");
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          flex: 2,
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.white,
+          ),
+          // flex: 3,
+        )
+      ],
     );
   }
 }
